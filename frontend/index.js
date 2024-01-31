@@ -68,6 +68,7 @@ function createCard (lwithm) {
       cards.classList.remove('selected');
     } else {
       cards.classList.add('selected');
+      document.querySelector('info').textContent = `${.selected.fullName}`
     }
 
   })
