@@ -52,7 +52,7 @@ function createCard (lwithm) {
   ul.appendChild(li)
 } )
 
- console.log(cards)
+//  console.log(cards)
 
   email.textContent = `${lwithm.email}`
   h3.textContent = `${lwithm.fullName}, ID ${lwithm.id}`
@@ -64,14 +64,17 @@ function createCard (lwithm) {
   cards.appendChild(ul)
 
   cards.addEventListener('click', ()=> {
+    cards.classList.toggle('selected')
+
     if (cards.classList.contains('selected')) {
-      cards.classList.remove('selected');
-    } else {
-      cards.classList.add('selected');
-      // document.querySelector('info').textContent = `The selected learner is ${lwithm.fullName}`
+     document.querySelectorAll('.selected').forEach(otherCard => {
+      if (otherCard !== cards) {
+      otherCard.classList.remove('selected');
     }
 
-  })
+  }) } })
+
+  console.log(cards)
 
 return cards
 
