@@ -63,18 +63,29 @@ function createCard (lwithm) {
   cards.appendChild(h4)
   cards.appendChild(ul)
 
-  cards.addEventListener('click', ()=> {
-    cards.classList.toggle('selected')
+cards.addEventListener('click', () => {
+  cards.classList.toggle('selected');
 
-    if (cards.classList.contains('selected')) {
-     document.querySelectorAll('.selected').forEach(otherCard => {
+  // Deselect all other cards if the clicked card is selected
+  if (cards.classList.contains('selected')) {
+    document.querySelectorAll('.card.selected').forEach(otherCard => {
       if (otherCard !== cards) {
-      otherCard.classList.remove('selected');
-    }
+        otherCard.classList.remove('selected');
+      }
+    });
+  }
 
-  }) } })
+  const selectedCard = document.querySelector('.selected');
+  const infoParagraph = document.querySelector('.info');
 
-  console.log(cards)
+  if (selectedCard) {
+    const selectedLearnerName = selectedCard.querySelector('h3').textContent;
+    infoParagraph.textContent = `The selected learner is ${lwithm.fullName}`;
+  } else {
+    infoParagraph.textContent = "No learner is selected";
+  }
+
+});
 
 return cards
 
